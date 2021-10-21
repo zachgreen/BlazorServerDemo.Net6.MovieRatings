@@ -1,0 +1,44 @@
+﻿@page "/movies"
+
+<PageTitle>Movies</PageTitle>
+
+
+@using BlazorServerDemo.Net6.MovieRatings.Web.Data
+@inject MoviesService MoviesService
+
+<h3>Movies</h3>
+
+@if (movies == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in movies)
+            {
+                <tr>
+                    <td>@movie.Id</td>
+                    <td>@movie.Name</td>
+                    <td>@movie.Genre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private IEnumerable<Movie>? movies;
+
+    protected override async Task OnInitializedAsync()
+    {
+        movies = await MoviesService.GetAsync();
+    }
+}
