@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="5.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BlazorServerDemo.Net6.MovieRatings.Models\BlazorServerDemo.Net6.MovieRatings.Models.csproj" />
+    <ProjectReference Include="..\BlazorServerDemo.Net6.MovieRatings.Utilities\BlazorServerDemo.Net6.MovieRatings.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

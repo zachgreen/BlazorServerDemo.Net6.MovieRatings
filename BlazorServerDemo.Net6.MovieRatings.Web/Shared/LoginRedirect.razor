@@ -1,0 +1,9 @@
+﻿@using BlazorServerDemo.Net6.MovieRatings.Web.Data
+@inject NavigationManager navManager
+@inject PathService pathService
+@code {
+     protected override void OnInitialized()
+     {
+        navManager.NavigateTo($"authentication/signin?returnUrl={Uri.EscapeDataString(navManager.Uri)}", true);
+     }
+ }

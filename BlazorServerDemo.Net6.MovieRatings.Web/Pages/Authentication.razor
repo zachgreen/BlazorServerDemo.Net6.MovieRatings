@@ -1,0 +1,23 @@
+﻿@page "/authentication-test/login"
+@using Microsoft.AspNetCore.Authentication
+@using BlazorServerDemo.Net6.MovieRatings.Utilities
+@inject NavigationManager NavManager
+@inject IHttpContextAccessor Context
+
+@code {
+
+    private string? _returnUrl = string.Empty;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        //extract returnUrl
+        NavManager.TryGetQueryString<string?>("returnUrl", out _returnUrl);
+
+        //force user to authenticate
+        await Context.HttpContext.ChallengeAsync("oidc", new AuthenticationProperties { RedirectUri = _returnUrl });
+
+
+        await base.OnInitializedAsync();
+    }
+}
